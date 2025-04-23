@@ -43,7 +43,7 @@ public class mob_pool_manager : MonoBehaviour
     {
         for (int i = 0 ;i < mob_pool.Count ;i++)
         {
-            if(mob_pool[i].is_alive() == false)
+            if(mob_pool[i].is_alive() == false && mob_pool[i].gameObject.activeSelf == false)
             {
                 return mob_pool[i];
             }
@@ -60,8 +60,8 @@ public class mob_pool_manager : MonoBehaviour
     public void refund_pool(zombie z)
     {
         z.gameObject.SetActive(false);
-        z.transform.parent = spawn_pos.transform;
-        z.transform.localPosition = Vector3.zero;
+        //z.transform.parent = spawn_pos.transform;
+        //z.transform.localPosition = Vector3.zero;
         z.reset_zombie();
         z.HP_bar.fillAmount = 1f;
         z.transform.rotation = Quaternion.Euler(Vector3.zero);
